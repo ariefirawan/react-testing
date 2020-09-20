@@ -1,12 +1,16 @@
 import React from 'react';
 import { mount } from 'enzyme';
-
+import Root from 'Root';
 import CommentBox from 'components/CommentBox';
 
 let wrapper;
 
 beforeEach(() => {
-  wrapper = mount(<CommentBox />);
+  wrapper = mount(
+    <Root>
+      <CommentBox />
+    </Root>
+  );
 });
 
 afterEach(() => {
@@ -25,7 +29,7 @@ describe('the text area', () => {
     });
     wrapper.update();
   });
-  
+
   it('has a textarea that users can type in', () => {
     expect(wrapper.find('textarea').prop('value')).toEqual('new comment');
   });
